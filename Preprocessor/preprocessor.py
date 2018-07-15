@@ -7,6 +7,7 @@ import os
 import pickle as pk
 import shutil
 import json
+import fire
 
 
 def segment(input, to_string=False):
@@ -22,14 +23,16 @@ class Preprocessor(object):
     """
     class for clean raw,get vocabulary,get trainset
     """
-    def __init__(self):
-        self.raw_list = ['raw/sample', 'raw/sample']
-        #self.raw_list = ['raw/wiki_00', 'raw/wiki_01']
+    def __init__(self, test=False):
+        if test:
+            self.raw_list = ['raw/sample', 'raw/sample']
+        else:
+            self.raw_list = ['raw/wiki_00', 'raw/wiki_01']
         self.proessed_root = 'processed/'
         self.counter = Counter()
         self.vocabulary = {'<PAD>': 0, '<UNK>': 1, '<SOS>': 2, '<EOS>': 3}
         self.fast_read_w2v = 'raw/word2vec_file/sgns.wiki.fastreading.m'
-        self.save_path = 'Preprocessor/preprocessor.pkl'
+        self.save_path = 'Preprocessor/'
 
     def get_corpus(self):
         """
@@ -116,6 +119,7 @@ class Preprocessor(object):
             return 1
 
     def save(self, path=None):
+        #TODO: use class name as save name
         if path is None:
             pk.dump(self, open(self.save_path, 'wb'))
         else:
@@ -132,5 +136,13 @@ def test():
     pr.pipeline_gen_trainset()
     pr.save()
 
+def run():
+    pr = Preprocessor(test=False)
+    pr.pipeline_process_raw()
+    pr.pipeline_gen_w2v()
+    pr.pipeline_gen_trainset()
+    pr.save()
+
 if __name__ == '__main__':
-    test()
+    fire.Fire()
+
