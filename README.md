@@ -1,4 +1,4 @@
-# elmo-pytorch
+# ELMo-pytorch
 
 ## This project is a trial for trainning ELMo with chinese corpus, trying to build a tool for both trainning and using.
 
