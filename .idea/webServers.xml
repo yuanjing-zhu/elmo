@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="45881767-ca2d-433e-adcd-83cdf980afbd" name="GPU" url="http://172.18.40.192">
-        <fileTransfer host="172.18.40.192" port="22" rootFolder="/data/dltjl" accessType="SFTP">
+        <fileTransfer host="172.18.40.192" port="22" rootFolder="/data/yuanjing/elmo" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
